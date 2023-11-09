@@ -1,6 +1,5 @@
 <?php
-
-class User
+class User 
 {
     public int $id;
     public string $nombre;
@@ -9,5 +8,6 @@ class User
     public string  $password;
     public int  $Role_id;
 }
+
 
 ?>

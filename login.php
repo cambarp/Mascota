@@ -3,9 +3,33 @@
  $nombreuser="";
  $correo="";
  $contraseña="";
- $numColumnas=0;
- 
+ $id=1;
+ require_once __DIR__. "/vendor/autoload.php";
+    use Dotenv\Dotenv;
+    $dotenv = Dotenv::createImmutable(__DIR__) ;
+    $dotenv->load();
 
+require_once(__DIR__ . '/controller/user.controller.php');
+
+ 
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        
+    if (isset($_POST["nombre"]) && isset($_POST["nombreuser"]) && isset($_POST["correo"]) && isset($_POST["contraseña"])) {
+        $nombre = $_POST["nombre"];
+        $nombreuser = $_POST["nombreuser"];
+        $correo = $_POST["correo"];
+        $contraseña = $_POST["contraseña"];
+        
+    }
+    $controlar=new usercontroller();
+
+    $controlar->create($nombre,$nombreuser,$correo,$contraseña);
+
+    
+    
+}
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -16,33 +40,30 @@
     <title>Registro</title>
 </head>
 <body>
-    <div class="imag"> </div>
+    
     <div class="login" >
         <div class="login__logo">
             <img class="logo__imag" src="interfaz_Mascota\logo-removebg-preview (1).png" alt="">
         </div>
     <form action="" method="POST" class="login__form">
         <div class="grupo">
-                <input type="text" name="nombre" placeholder=" " id="nombre" class="login__input">
+                <input type="text" autocomplete="off" name="nombre" placeholder=" " id="nombre" class="login__input">
                 <label for="nombre"  class="login__label">Nombre</label>
             </div>
             <div class="grupo">
-                <input  type="text" name="nombreuser" id="usuario" placeholder=" " class="login__input">
+                <input  type="text" autocomplete="off" name="nombreuser" id="usuario" placeholder=" " class="login__input">
                 <label for="usuario"  class="login__label">Nombre de Usuario</label>
             </div>
             <div class="grupo">
-                <input type="email" name="correo" placeholder=" " id="correo" class="login__input">
+                <input type="email" autocomplete="off" name="correo" placeholder=" " id="correo" class="login__input">
                 <label for="correo"  class="login__label">Correo</label>
             </div>
             <div class="grupo">
-                <input type="password" name="contraseña" placeholder=" " id="contraseña"  class="login__input">
+                <input type="password" autocomplete="off" name="contraseña" placeholder=" " id="contraseña"  class="login__input">
                 <label for="contraseña"   class="login__label">Contraseña</label>
             </div>
-            <div class="grupo">
-                <input type="text" name="rol" placeholder=" " id="rol"  class="login__input">
-                <label for="rol"   class="login__label">Rol</label>
-            </div>
-            <input class="Registrar" type="submit" name="Registrar" value="Registrar">
+
+            <input  class="Registrar" ubi type="submit" name="Registrar" value="Registrar">
             
     </form>
     </div>
@@ -52,7 +73,10 @@
         body{
             
             display:flex;
-            background-color: #FBEEE6 ;
+            background:url("interfaz_Mascota/mascotas.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            
             
         }
         .login{
@@ -62,11 +86,13 @@
             height: 40vw;
             max-width: 600px;
             padding:0.4vw 4vw;
+            background:rgba(2, 12,7,.20);
             text-align:center;
-            box-shadow: 9px 8px 10px rgba(128, 128, 128, 0.5);
+            box-shadow: 9px 8px 15px rgba(128, 128, 128, 0.5);
             background: ;
            
         }
+        
         .grupo{
             position: relative;
             color: white;
@@ -100,7 +126,7 @@
             padding: .6em .1em;
             font-size: 1rem;
             outline: none;
-            border-bottom: 1px solid #706c6c;
+            border-bottom: 1.4px solid #706c6c;
                 }
         .imag{
             margin-top:4.5vw;
@@ -116,8 +142,7 @@
         .login__logo{
             margin:auto;
             width: 12vw;
-            height:10vw;
-            
+            height:12vw;
         }
         .logo__imag{
             width: 100%;

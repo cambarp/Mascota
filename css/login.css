@@ -1,0 +1,121 @@
+*{
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{      
+    display: flex;
+    font-family: 'Bitter', serif;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Quicksand', sans-serif;
+}
+    
+.general{
+    margin: auto;
+    width: 70%;
+    position: relative;
+    
+}
+.general__atras{
+    display: flex;
+    margin-top: 4.5vw;
+    width: 100%;
+    padding: 6.7vw 1.4vw;
+    justify-content: center;
+    
+    
+}
+.general__atras div{
+    margin: 1.5vw 1.6vw;
+    color: black;
+    transition: all 500ms;
+    background-color: #3d8544;
+
+}
+.general__atras div h2{
+    background-color: #3d8544;
+    font-weight: 400;
+    font-size: 2.1vw;
+    margin-top: 1.4vw;
+}
+.general__atras div button{
+    margin-top: 1.2vw;
+    padding: 0.9vw 2.5vw;
+    background-color: #3d8544;
+    border-radius: 1.5vw;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.general__atras p{
+    font-size: 1.8vw;
+    margin-top: 1vw;
+}
+.general__formularios{
+    
+    display: flex;
+    text-align: center;
+    position: relative;
+    top: -25.4vw;
+    left: 14px;
+}
+.general__formularios form{
+    border-radius:12px ;
+    position: absolute;
+}
+.login__form{
+    padding: 1.4vw 9.3vw;
+    opacity: 1;
+    display:block;
+}
+.login__ingresar{
+    padding: 5.4vw 9.3vw;
+    display: none;
+}
+
+/* color rgba(138,221,45,1) */
+.grupo{
+    position: relative;
+    color: white;
+    padding-bottom:1.2vw;
+
+}
+
+.login__label{
+        font-family: 'Source Serif Pro', serif;
+        color:black;
+        cursor: pointer;
+        position:absolute;
+        top: 0;
+        left: 5px;
+        transform: translateY(10px);
+        transition: transform .5s ,color.3s;
+        font-size: 1.1em;
+}
+.login__input:focus + .login__label,
+.login__input:not(:placeholder-shown)+.login__label{
+    transform: translateY(-12px) ;
+    transform-origin: left top;
+    color:  #3d8544;
+}
+.login__input{
+    position: relative;
+    background: none;
+    border: none;
+    color: #3d8544;
+    padding: .6em .1em;
+    font-size: 1rem;
+    outline: none;
+    border-bottom: 1.4px solid #706c6c;
+        }
+
+.Registrar{
+    margin-top:1.2vw;
+    padding:1.3vw 3.5vw;
+    border:none;
+    border-radius:1.4vw;
+    cursor:pointer;
+    background:#3d8544;
+}

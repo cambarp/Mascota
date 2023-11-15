@@ -1,133 +1,177 @@
+<?php
+require_once __DIR__. "/vendor/autoload.php";
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable(__DIR__) ;
+$dotenv->load();
 
-<?php 
+require_once __DIR__ ."/controller/user.controller.php";
 
-    require_once __DIR__. "/vendor/autoload.php";
-    use Dotenv\Dotenv;
-    $dotenv = Dotenv::createImmutable(__DIR__) ;
-    $dotenv->load();
-    
-    require_once __DIR__ ."/controller/user.controller.php";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $nombreuser = $_POST['nombreuser'];
-        $contraseña = $_POST['contraseña'];
-
-        $controller = new usercontroller();
-    
-        if ($controller->authenticate($nombreuser, $contraseña)) {
-           
-            echo "Autenticación exitosa. Bienvenido, $nombreuser!";
-            echo '<script>setTimeout(function(){ window.location = "Read.php"; }, 1000);</script>';
-        } else {
-          
-            echo "Nombre de usuario o contraseña incorrectos.";
-        }
-    }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@200&family=Dosis:wght@200&family=Playfair+Display:ital,wght@1,400;1,500&family=Quicksand&display=swap" rel="stylesheet">
+    <title>Document</title>
 </head>
 <body>
-    <div class="login">
-    <div class="login__logo">
-            <img class="logo__imag" src="interfaz_Mascota\logo-removebg-preview (1).png" alt="">
+    <header class="header">
+        <div class="header__logo">
+            <img src="interfaz_Mascota\logo-removebg-preview (1).png" alt="">
         </div>
-    <form action="" method="POST" class="formulario">
-            <div class="grupo">
-                <input  type="text" name="nombreuser" id="usuario" autocomplete="off" placeholder=" " class="login__input" required>
-                <label for="usuario"  class="login__label">Nombre de Usuario</label>
-            </div>
-            <div class="grupo">
-                <input type="password" autocomplete="off" name="contraseña" placeholder=" " id="contraseña"  class="login__input" required>
-                <label for="contraseña"   class="login__label">Contraseña</label>
-            </div>
-           <input class="Registrar" type="submit" name="Registrar" value="ingresar"></a> 
-    </form>
-    <p>aun no tienes cuenta <a href="login.php">ingresa aqui</a></p>
-    </div>
+
+        <div class="header__conctatos">
+            <ul class="conctatos__ul">
+                <li class="ul__li"><a href="#"><i class="fab fa-whatsapp whatsapp"></i></a></li>
+                <li class="ul__li"><a href="#"> <i class="fas fa-envelope email"></i></a></li>
+            </ul>
+        </div>
+    
+    </header>
+    <main class="cuerpo">
+        <div class="cuerpo__img">
+            <img class="img__perrito" src="interfaz_Mascota\cachorrinho.png" alt="">
+            <a href="verificar.php"><button class="registrar iniciar">
+                iniciar seccion 
+            </button></a></a>
+        </div>
+        <div class="cuerpo__text">
+            <p class="text__p">
+                Mas para ellos porque son nuestros mejores amigos
+            </p>
+            <h2 class="text__ti">
+                Atencion para ellos del mas alto nivel
+            </h2>
+            <p>
+                nos encantaria poder atender a tu mascota <br>
+                Que esperas para hacer tu registro 
+               
+            </p>
+
+            <a href="login.php"><button class="registrar">
+                registrar
+            </button></a>
+        </div>
+    </main>
     
 
     <style>
 
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body{
-            height:100vh;
-            display:flex;
-            background:white;
+            font-family: 'Bitter', serif;
+                font-family: 'Dosis', sans-serif;
+                font-family: 'Playfair Display', serif;
+                font-family: 'Quicksand', sans-serif;
+           
             
         }
+        .header{
+            display:flex;
+            margin:auto;
+            justify-content: space-between;
+            align-items: center;
+            width: 88%;
+            height:6.4vw;
+            padding:0.1vw 0vw;
+        }
+        .header__menu{
+            display:flex;
+            align-items: center;
+        }
+        .menu__navegacion{
+            list-style: none;
+            display:flex;
+        }
+        .navegacion__li{
+            margin-right: 9vw;
+            justify-content: space-around;
+        }
+        .navegacion__li  a{
+            text-decoration: none;
+            font-size: 1.4vw;
+            color:#3d8544;
+        }
+        .header__conctatos{
+            display:flex;
+            margin-right:6.4vw;
+            align-items: center;
 
-        .login{
-                    margin:auto;
-                    width: 25vw;
-                    border-radius:10px ;
-                    height: 32vw;
-                    max-width: 600px;
-                    padding:1.5vw 3.2vw;
-                    background:rgba(2, 12,7,.20);
-                    text-align:center;
-                    box-shadow: 9px 8px 15px rgba(128, 128, 128, 0.5);
-                    background: ;
-                
-                }
-
-        .grupo{
+        }
+        .whatsapp{
+            font-size:2.2vw;
+            color:#3d8544;
+        }
+        .email{
+            color:#3d8544;
+            font-size:2.2vw;
+        }
+        .ul__li{
+            list-style: none;
+            display:flex;
+            margin-right:4vw;
+        }
+        .conctatos__ul{
+            list-style: none;
+            display:flex;
+        }
+        .cuerpo{
+            display:flex;
+        }
+        .cuerpo__img{
+            width: 42vw;
             position: relative;
-            color: white;
-            padding-bottom:1.2vw;
-    
+            height: 35vw;
+           
         }
-
-        .login__label{
-                font-family: 'Source Serif Pro', serif;
-                color:black;
-                cursor: pointer;
-                position:absolute;
-                top: 0;
-                left: 5px;
-                transform: translateY(10px);
-                transition: transform .5s ,color.3s;
-                font-size: 1.1em;
+        .img__perrito{
+            width: 95%;
+            height:98%;
         }
-        .login__input:focus + .login__label,
-        .login__input:not(:placeholder-shown)+.login__label{
-            transform: translateY(-12px) ;
-            transform-origin: left top;
-            color: black;
+        .cuerpo__text{
+            width: 45vw;
+            text-align:right;
+            padding-top: 5vw;
+            height: 34vw;
+            
         }
-        .login__input{
-            position: relative;
-            width: 100%;
-            background: none;
-            border: none;
-            color: #706c6c;
-            padding: .6em .1em;
-            font-size: 1rem;
-            outline: none;
-            border-bottom: 1.4px solid #706c6c;
-                }
-
-                .Registrar{
+        .cuerpo__text p{
+            font-size:1.6vw;
+            margin:0.8vw 0vw;
+        }
+        .cuerpo__text h2{
+            font-size:3.5vw;
+        }
+        .registrar{
+            padding: 1.5vw 5.4vw;
+            border-radius:1.1vw;
+            font-family: 'Bitter', serif;
+            font-family: 'Dosis', sans-serif;
+            font-family: 'Playfair Display', serif;
+            font-family: 'Quicksand', sans-serif;
+            background:#3d8544;
             margin-top:1.2vw;
-            padding:1.3vw 3.5vw;
+            font-size:1.5vw;
             border:none;
-            border-radius:1.4vw;
             cursor:pointer;
-            background:white;
         }
-
-
-                
+        .iniciar{
+            position:relative;
+            top:-6.4vw;
+            padding: 1.5vw 2.4vw;
+            margin-left:5.2vw;
+        }
     </style>
 </body>
 </html>
-
-
-
-
-

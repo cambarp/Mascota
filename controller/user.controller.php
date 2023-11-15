@@ -34,7 +34,7 @@ class usercontroller extends Connection{
         }
        
         $conect->close();
-        echo '<script>setTimeout(function(){ window.location = "index.php"; }, 1000);</script>';
+        echo '<script>setTimeout(function(){ window.location = "login.php"; }, 1000);</script>';
     }
     public function authenticate($nombreuser, $contraseña) {
         $conect = $this->connect();

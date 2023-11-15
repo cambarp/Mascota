@@ -10,12 +10,14 @@ var iniciar=document.getElementById('iniciar').addEventListener("click",iniciar)
 
 
 function registrar(){
-    login__ingresar.style.display="block";
-    general__formularios.style.left="460px";
+    login__form.style.display="block";
+    login__ingresar.style.display=""
+    general__formularios.style.left="465px";
+    
 }
 
 function iniciar(){
-    login__form.style.display="block";
-    login__ingresar.style.display="none"
-    general__formularios.style.left="0";
+    login__ingresar.style.display="block"
+    login__form.style.display="none";
+    general__formularios.style.left="12px";
 }

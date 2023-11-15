@@ -38,9 +38,7 @@ require_once __DIR__ ."/controller/user.controller.php";
     <main class="cuerpo">
         <div class="cuerpo__img">
             <img class="img__perrito" src="interfaz_Mascota\cachorrinho.png" alt="">
-            <a href="verificar.php"><button class="registrar iniciar">
-                iniciar seccion 
-            </button></a></a>
+            
         </div>
         <div class="cuerpo__text">
             <p class="text__p">
@@ -56,7 +54,7 @@ require_once __DIR__ ."/controller/user.controller.php";
             </p>
 
             <a href="login.php"><button class="registrar">
-                registrar
+                Iniciar
             </button></a>
         </div>
     </main>
@@ -70,6 +68,7 @@ require_once __DIR__ ."/controller/user.controller.php";
             box-sizing: border-box;
         }
         body{
+            background:#F4F6F6;
             font-family: 'Bitter', serif;
                 font-family: 'Dosis', sans-serif;
                 font-family: 'Playfair Display', serif;

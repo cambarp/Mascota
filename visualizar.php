@@ -12,89 +12,55 @@ $mascotas=$mascotas->read();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Mascotas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 80%;
-            margin: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .botones {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .editar, .eliminar {
-            padding: 5px 10px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #4caf50;
-            color: white;
-        }
-
-        .eliminar {
-            background-color: #f44336;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@200&family=Dosis:wght@200&family=Playfair+Display:ital,wght@1,400;1,500&family=Quicksand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/visualizar.css">
+<title>Mascotas</title>
 </head>
 <body>
+<div class="fondo">
 
-
-<table>
-    <tr>
-        <th>Nombre</th>
-        <th>Tipo de Mascota</th>
-        <th>Raza</th>
-        <th>Fecha de Nacimiento</th>
-        <th>Acciones</th>
-    </tr>
-    
-    <?php
-    // Iterar sobre los resultados y agregar filas a la tabla
-            foreach ($mascotas as $mascota) {
-                echo '<tr>';
-                echo '<td>' . $mascota['NombreMascota'] . '</td>';
-                echo '<td>' . $mascota['TipoMascotaNombre'] . '</td>';  // Corregido
-                echo '<td>' . $mascota['NombreRaza'] . '</td>';         // Corregido
-                echo '<td>' . $mascota['FechaNacimiento'] . '</td>';
-                echo '<td class="botones">';
-                echo '<button class="editar">Editar</button>';
-                echo '<button class="eliminar">Eliminar</button>';
-                echo '</td>';
-                echo '</tr>';
-            }
-    
+    <div class="image">
         
-    ?>
-</table>
+    </div>
+    <div class="tabla">
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo de Mascota</th>
+            <th>Raza</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Acciones</th>
+        </tr>
+        
+        <?php
+        
+                foreach ($mascotas as $mascota) {
+                    echo '<tr>';
+                    echo '<td>' . $mascota['NombreMascota'] . '</td>';
+                    echo '<td>' . $mascota['TipoMascotaNombre'] . '</td>';  
+                    echo '<td>' . $mascota['NombreRaza'] . '</td>';         
+                    echo '<td>' . $mascota['FechaNacimiento'] . '</td>';
+                    echo '<td class="botones">';
+                    echo '<button class="editar">Editar</button>';
+                    echo '<button class="eliminar">Eliminar</button>';
+                    echo '</td>';
+                    echo '</tr>';
+                }
+        
+            
+        ?>
+    </table>
+    </div>
 
-    <!-- Fin del ejemplo -->
-</table>
+</div>
+
 
 </body>
 </html>

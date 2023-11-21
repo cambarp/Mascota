@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    height: 100vh;
+    background:#F4F6F6;
+    font-family: 'Bitter', serif;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Quicksand', sans-serif;
+}
+.general-404{
+    margin: auto;
+    width: 85%;
+    display: flex;
+}
+.general__imagen{
+    width: 50%;
+}
+.general__texto{
+    width: 50%;
+    text-align: right;
+    align-items: center;
+    padding: 7.5vw 2.3vw;
+}
+.general__texto p{
+    font-size: 1.8vw;   
+    color: black; 
+    font-weight: 500;
+    margin-bottom: 3.5vw;
+}
+.general__texto p a{
+    color: #3d8544;
+    text-decoration: none;
+}
+.general__texto h3{
+    font-size: 3.5vw;   
+    color: #3d8544; 
+    font-weight: 500;
+    margin-bottom: 2.1vw;
+}

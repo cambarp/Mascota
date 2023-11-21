@@ -5,45 +5,64 @@
 
 }
 body{      
-    display: flex;
+    background-image: url("../interfaz_Mascota/gato_fraco_o_que_fazer_24584_orig.jpg");
+    background-size: cover;
+    overflow-x: hidden;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 90%;
+    margin: auto;  
     font-family: 'Bitter' serif;
     font-family: 'Dosis' sans-serif;
     font-family: 'Playfair Display' serif;
     font-family: 'Quicksand' sans-serif;
-}
     
+}
+        
 .general{
-    margin: auto;
-    width: 70%;
+    background-color: rgb(74, 71, 71);
+    opacity: 0.8;
+    border-radius: 1.4vw;
+    
+     margin: auto;
+    width: 100%;
     position: relative;
     
+        
 }
 .general__atras{
     display: flex;
     margin-top: 4.5vw;
+    border-radius: 1.4vw;
     width: 100%;
     padding: 6.7vw 1.4vw;
     justify-content: center;
     
-    
+}
+.logo{
+    width: 13vw;
+    height:10.2vw;
 }
 .general__atras  div {
     margin: 1.5vw 1.6vw;
-    color: black;
+    color: white;
     transition: all 500ms;
-    background-color: #3d8544;
-
+    
 }
 .general__atras div h2{
-   
+    color:#17cc29;
     font-weight: 400;
     font-size: 2.1vw;
     margin-top: 1.4vw;
 }
 .general__atras div button{
-    margin-top: 1.2vw;
+    margin-top: 1.4vw;
+    margin-bottom:1.3vw;
     padding: 0.9vw 2.5vw;
-    background-color: #3d8544;
+    background-color: #19d02c;
+    color: #000;
+    font-size: 1.2vw;
     border-radius: 1.5vw;
     border: none;
     outline: none;
@@ -54,60 +73,64 @@ body{
     margin-top: 1vw;
 }
 .general__formularios{
-    background-color: #3d8544;
+    background-color:#3d8544;
     display: flex;
     text-align: center;
     position: relative;
-    top: -25.4vw;
-    left: 14px;
+    top: -28.4vw;
+    left: 180px;
 }
 .general__formularios form{
-    border-radius:12px ;
+    background-color:rgb(8, 8, 8);
+    opacity: 22.0;
+    border-radius:1.2vw;
     position: absolute;
 }
 .login__form{
-    padding: 1.4vw 9.3vw;
-    opacity: 1;
-    display:block;
+    width: 32.5vw;
+    padding: 5.3vw 4.3vw;
+    opacity: 4;
+    display:none;
+    top:-2.4vw;
 }
 .login__ingresar{
-    padding: 5.4vw 9.3vw;
-    background-color: #3d8544;
-    display: none;
+    width: 32.5vw;
+    padding: 7vw 4.3vw;
+    background-color:#3d8544;
+    display:"block";
+        
 }
-
-/* color rgba(138,221,45,1) */
 .grupo{
     position: relative;
     color: white;
     padding-bottom:1.2vw;
 
 }
-
 .login__label{
-        font-family: 'Source Serif Pro' serif;
-        color:black;
-        cursor: pointer;
-        position:absolute;
-        top: 0;
-        left: 5px;
-        transform: translateY(10px);
-        transition: transform .5s , color.3s;
-        font-size: 1.1em;
-}
+    font-family: 'Source Serif Pro' serif;
+    color:white;
+    cursor: pointer;
+    position:absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s , color.3s;
+    font-size: 1.2em;
+    }
 .login__input:focus + .login__label,
 .login__input:not(:placeholder-shown)+.login__label{
     transform: translateY(-12px) ;
     transform-origin: left top;
-    color:  #3d8544;
+    color: white;
 }
 .login__input{
     position: relative;
+    width:95%;
     background: none;
     border: none;
     color: #3d8544;
     padding: .6em .1em;
-    font-size: 1rem;
+    font-size: 1.2rem;
     outline: none;
     border-bottom: 1.4px solid #706c6c;
         }
@@ -116,7 +139,8 @@ body{
     margin-top:1.2vw;
     padding:1.3vw 3.5vw;
     border:none;
-    border-radius:1.4vw;
+    border-radius:1.7vw;
     cursor:pointer;
-    background:#3d8544;
+    font-size: 1.1vw;
+    background:white;
 }

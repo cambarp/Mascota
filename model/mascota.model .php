@@ -3,7 +3,8 @@ class mascota
 {
     public int $id;
     public string $nombre;
-    public string $username;
+    public string $FechaNacimiento;
+    public string $foto;
     
 
 }

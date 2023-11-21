@@ -1,3 +1,28 @@
+<?php
+require_once __DIR__ . "/./controller/mascota.controller.php";
+require_once __DIR__. "/vendor/autoload.php";
+
+    use Dotenv\Dotenv;
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['guardar'])) {
+    
+    
+        $nombre_r = $_POST["nombre_r"];
+        $fechaNacimiento = $_POST["fechaNacimiento"];
+        $nombre_tipo = $_POST["nombre_tipo"];
+        $Raza = $_POST["Raza_mascota"];
+    
+        $insertar = new Mascotacontroller();
+        $insertar->CrearMascota($nombre_r, $fechaNacimiento,$nombre_tipo,$Raza);
+        
+        
+    }
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,25 +32,18 @@
 </head>
 <body>
 
-    <form action="#" class="formulario" method="post">
+    <form  action="" class="formulario" method="POST">
         <label for="nombre">Nombre de la Mascota:</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="tipo">Tipo de Mascota:</label>
-        <input type="text" id="tipo" name="tipo" required>
-        <label for="edad">Edad Equivalente-Joven:</label>
-        <input type="number" id="edad" name="edad" required>
-        <label for="edad">Edad Equivalente-Adulto:</label>
-        <input type="number" id="edad" name="edad" required>
-        <label for="edad">Edad Adulto:</label>
-        <input type="number" id="edad" name="edad" required>
-        <label for="tipo">Raza:</label>
-        <input type="text" id="Raza" name="tipo"  required>
-
+        <input type="text" id="nombre" name="nombre_r" required>
+        <label for="nombre">Tipo de Mascota:</label>
+        <input type="text" id="nombre" name="nombre_tipo" required>
+        <label for="nombre">Raza de la mascota:</label>
+        <input type="text" id="nombre" name="Raza_mascota" required>
         <label for="fechaNacimiento">Fecha de Nacimiento:</label>
         <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+        
 
-        <input type="submit" class="guardar" value="Guardar Datos">
+        <input type="submit" name="guardar" class="guardar" value="Guardar">
     </form>
 
 
@@ -74,6 +92,76 @@
             color:white;
 
         }
+
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form{
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+}
+
+.header {
+    background-color: #3498db;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+.form-group {
+    padding: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group input[type="submit"] {
+    background-color: #3498db;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.forgot-password {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
     </style>
 
 </body>

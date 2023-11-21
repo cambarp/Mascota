@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background:#F4F6F6;
+    font-family: 'Bitter', serif;
+        font-family: 'Dosis', sans-serif;
+        font-family: 'Playfair Display', serif;
+        font-family: 'Quicksand', sans-serif;
+   
+    
+}
+.header{
+    display:flex;
+    margin:auto;
+    justify-content: space-between;
+    align-items: center;
+    width: 88%;
+    height:6.4vw;
+    padding:0.1vw 0vw;
+}
+.header__menu{
+    display:flex;
+    align-items: center;
+}
+.menu__navegacion{
+    list-style: none;
+    display:flex;
+}
+.navegacion__li{
+    margin-right: 9vw;
+    justify-content: space-around;
+}
+.navegacion__li  a{
+    text-decoration: none;
+    font-size: 1.4vw;
+    color:#3d8544;
+}
+.header__conctatos{
+    display:flex;
+    margin-right:6.4vw;
+    align-items: center;
+
+}
+.whatsapp{
+    font-size:2.2vw;
+    color:#3d8544;
+}
+.email{
+    color:#3d8544;
+    font-size:2.2vw;
+}
+.ul__li{
+    list-style: none;
+    display:flex;
+    margin-right:4vw;
+}
+.conctatos__ul{
+    list-style: none;
+    display:flex;
+}
+.cuerpo{
+    display:flex;
+}
+.cuerpo__img{
+    width: 42vw;
+    position: relative;
+    height: 35vw;
+   
+}
+.img__perrito{
+    width: 95%;
+    height:98%;
+}
+.cuerpo__text{
+    width: 45vw;
+    text-align:right;
+    padding-top: 5vw;
+    height: 34vw;
+    
+}
+.cuerpo__text p{
+    font-size:1.6vw;
+    margin:0.8vw 0vw;
+}
+.cuerpo__text h2{
+    font-size:3.5vw;
+}
+.registrar{
+    padding: 1.5vw 5.4vw;
+    border-radius:1.1vw;
+    font-family: 'Bitter', serif;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Quicksand', sans-serif;
+    background:#3d8544;
+    margin-top:1.2vw;
+    font-size:1.5vw;
+    border:none;
+    cursor:pointer;
+}
+.iniciar{
+    position:relative;
+    top:-6.4vw;
+    padding: 1.5vw 2.4vw;
+    margin-left:5.2vw;
+}

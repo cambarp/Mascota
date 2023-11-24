@@ -30,6 +30,7 @@
             
                 if ($controller->authenticate($nombreuser, $contraseña)) {
                     echo "Autenticación exitosa. Bienvenido, $nombreuser!";
+                    
                     echo '<script>setTimeout(function(){ window.location = "mascota.php"; }, 1000);</script>';
                 } else {
                     echo "Nombre de usuario o contraseña incorrectos.";

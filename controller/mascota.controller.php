@@ -16,15 +16,20 @@ class MascotaController extends Connection {
         $sql_dos = "INSERT INTO tipomascota(nombre) VALUES (?)";
         $dos = $conect->prepare($sql_dos);
         $dos->bind_param("s", $nombre_tipo);
-
+        if($dos->execute()){
+            $idTipoMascota = $conect->insert_id;
+            $sql_tres = "INSERT INTO raza(nombre,TipoMascota_id) VALUES (?,?)";
+            $tres = $conect->prepare($sql_tres);
+            $tres->bind_param("si", $Raza,$idTipoMascota);
+        }
         
 
         $tipomascota = new Tipomascota();
         $tipomascota->nombre = $nombre_tipo;
 
-        $sql_tres = "INSERT INTO raza(nombre) VALUES (?)";
-        $tres = $conect->prepare($sql_tres);
-        $tres->bind_param("s", $Raza);
+        
+
+        
 
         $raza = new Raza();
         $raza->nombre = $Raza;
@@ -33,9 +38,11 @@ class MascotaController extends Connection {
             $idTipoMascota = $conect->insert_id;
             $idRazaMascota = $conect->insert_id;
 
-            $sqlMascota = "INSERT INTO mascota (nombre, FechaNacimiento, foto, TipoMascota_id, Raza_id) VALUES (?, ?, null, ?, ?)";
+            session_start();
+            $idu=$_SESSION['User_id'];
+            $sqlMascota = "INSERT INTO mascota (nombre, FechaNacimiento, foto,User_id, TipoMascota_id, Raza_id) VALUES (?, ?, null,?, ?, ?)";
             $stmtMascota = $conect->prepare($sqlMascota);
-            $stmtMascota->bind_param("ssii", $nombre_r, $fechaNacimiento, $idTipoMascota, $idRazaMascota);
+            $stmtMascota->bind_param("ssiii", $nombre_r, $fechaNacimiento, $idu, $idTipoMascota, $idRazaMascota);
 
             if ($stmtMascota->execute()) {
                 echo "Datos insertados correctamente en las tres tablas.";
@@ -60,7 +67,7 @@ class MascotaController extends Connection {
     public function read() {
         $conect = $this->connect();
 
-        $read = " SELECT mascota.nombre AS NombreMascota, mascota.FechaNacimiento, tipomascota.nombre AS TipoMascotaNombre, raza.nombre AS NombreRaza 
+        $read = " SELECT mascota.id , mascota.nombre AS NombreMascota, mascota.FechaNacimiento, tipomascota.nombre AS TipoMascotaNombre, raza.nombre AS NombreRaza 
         FROM mascota
         INNER JOIN tipomascota ON mascota.TipoMascota_id = tipomascota.id
         INNER JOIN raza ON mascota.Raza_id = raza.id";
@@ -74,6 +81,24 @@ class MascotaController extends Connection {
         } else {
             return "No se encontraron mascotas.";
         }
+    }
+
+    public function update($id){
+        $conect = $this->connect();
+
+        $update="SELECT id,nombre , FechaNacimiento,  TipoMascota_id, Raza_id FROM mascota WHERE id='$id' ";
+        $resul = $conect->query($update);
+        if ($resul->num_rows > 0) {
+            $mostrar = [];
+            while ($row = $resul->fetch_assoc()) {
+                $mostrar[] = $row;
+            }
+            return $mostrar;
+        } else {
+            return "No se encontraron mascotas.";
+        }
+
+
     }
 }
 

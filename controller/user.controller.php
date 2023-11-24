@@ -46,8 +46,12 @@ class usercontroller extends Connection{
         $result = $conect->query($sql);
     
         if ($result->num_rows === 1) {
-           
-            return true;
+           $fila=$result->fetch_assoc();
+           $User_id=$fila['id'];
+           session_start();
+        $_SESSION['User_id']=$User_id;
+        return true;
+            
         } else {
             
             return false;
@@ -71,6 +75,8 @@ class usercontroller extends Connection{
                 $usuarios[$i]=$row;
                 $i++;
             }
+            
+            
         return $usuarios;
 
         $conect->close();

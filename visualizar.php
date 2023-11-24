@@ -32,6 +32,7 @@ $mascotas=$mascotas->read();
     <div class="tabla">
     <table>
         <tr>
+            <th>Id</th>
             <th>Nombre</th>
             <th>Tipo de Mascota</th>
             <th>Raza</th>
@@ -43,13 +44,14 @@ $mascotas=$mascotas->read();
         
                 foreach ($mascotas as $mascota) {
                     echo '<tr>';
+                    echo '<td>' . $mascota['id'] . '</td>';
                     echo '<td>' . $mascota['NombreMascota'] . '</td>';
                     echo '<td>' . $mascota['TipoMascotaNombre'] . '</td>';  
                     echo '<td>' . $mascota['NombreRaza'] . '</td>';         
                     echo '<td>' . $mascota['FechaNacimiento'] . '</td>';
                     echo '<td class="botones">';
-                    echo '<button class="editar">Editar</button>';
-                    echo '<button class="eliminar">Eliminar</button>';
+                    echo '<a class="editar" href="editar.php?id='. $mascota['id'] .'">editar</a>';
+                    echo '<a class="eliminar" href="eliminar.php?id='. $mascota['id'] .'">eliminar</a>';
                     echo '</td>';
                     echo '</tr>';
                 }

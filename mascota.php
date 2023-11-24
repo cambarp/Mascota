@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['guardar'])) {
         $fechaNacimiento = $_POST["fechaNacimiento"];
         $nombre_tipo = $_POST["nombre_tipo"];
         $Raza = $_POST["Raza_mascota"];
-    
+        
         $insertar = new Mascotacontroller();
         $insertar->CrearMascota($nombre_r, $fechaNacimiento,$nombre_tipo,$Raza);
         

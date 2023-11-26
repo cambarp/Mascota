@@ -24,9 +24,10 @@ class usercontroller extends Connection{
         $user->password = $contraseña;
 
         if ($conect->query($sql)) {
-             
             $mensaje_alerta = "Usuario creado correctamente";
-                echo '<script>alert("' . $mensaje_alerta . '");</script>';
+            echo '<script>alert("' . $mensaje_alerta . '");</script>';
+            session_start();
+            $_SESSION['User_id'] = $conect->insert_id;
 
         } else {
             $mensaje = "error Usuario no creado";
@@ -60,29 +61,13 @@ class usercontroller extends Connection{
         $conect->close();
         
     }
-
-
-
-    public  function read(){
-        $conect = $this->connect();
-
-        $sql = "SELECT * FROM user";
-        $resultado = $conect->query($sql);
-        $usuarios=[];
-
-        $i=0;
-        while ($row = $resultado->fetch_assoc()) {
-                $usuarios[$i]=$row;
-                $i++;
-            }
-            
-            
-        return $usuarios;
-
-        $conect->close();
-
+    public function verifySession() {
+        session_start();
+        if (!isset($_SESSION['User_id'])) {
+            header("Location: login.php");
+            exit();
+        }
     }
-    
     
     
 }

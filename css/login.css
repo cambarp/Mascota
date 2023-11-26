@@ -145,3 +145,24 @@ body{
     font-size: 1.1vw;
     background:white;
 }
+
+.notification {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+.success {     
+    color: #ffffff;
+    background-color: #4CAF50;
+    
+}
+
+.error {
+    background-color: #f44336;
+    color: #ffffff;
+}

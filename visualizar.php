@@ -41,7 +41,7 @@ $mascotas=$mascotas->read();
         </tr>
         
         <?php
-        
+                
                 foreach ($mascotas as $mascota) {
                     echo '<tr>';
                     echo '<td>' . $mascota['id'] . '</td>';
@@ -50,20 +50,71 @@ $mascotas=$mascotas->read();
                     echo '<td>' . $mascota['NombreRaza'] . '</td>';         
                     echo '<td>' . $mascota['FechaNacimiento'] . '</td>';
                     echo '<td class="botones">';
-                    echo '<a class="editar" href="editar.php?id='. $mascota['id'] .'">editar</a>';
-                    echo '<a class="eliminar" href="eliminar.php?id='. $mascota['id'] .'">eliminar</a>';
+                    echo '<a class="editar" href="javascript:void(0);" onclick="editRecord(' . $mascota['id'] . ')"">editar</a>';
+                    echo '<a class="eliminar" href="delete.php?id='. $mascota['id'] .'">eliminar</a>';
                     echo '</td>';
                     echo '</tr>';
                 }
-        
-            
+     
         ?>
     </table>
     </div>
+    <?php  
+
+
+    require_once __DIR__ . "/controller/conexion.php";
+        $id;
+        
+        $Mascota= new MascotaController();
+        $mas=$Mascota->read();  
+    foreach ($mas as $mascota) {
+        $id=$mascota['id'] ;
+        $nombremas=$mascota['NombreMascota'];
+        $fechana=$mascota['FechaNacimiento'] ;
+         $tipomas=$mascota['TipoMascotaNombre'] ;  
+         $nombreraza=$mascota['NombreRaza'] ; 
+         
+    }
+
+    if(isset($_POST['actualizar'])){
+        $id=$_GET['id'];
+        $nombre = $_POST['nombre'];
+        $fecha_na = $_POST['fecha_na'];
+        $controller = new MascotaController();
+        $update=$controller->update($id, $nombre, $fecha_na);
+
+    } ?>
+
+<script>
+function editRecord(id) {
+    var formContainer = document.getElementById('editFormContainer');
+    document.getElementById('editForm').action = 'visualizar.php?id=' + id;
+    formContainer.style.display = 'block';
+    document.getElementById('cancelar').addEventListener('click', function() {
+        // Hide the edit form container when "Cancelar" is clicked
+        formContainer.style.display = 'none';
+    });
+
+    
+}
+</script>
+
+<div class="formulario" class="edit-container" id="editFormContainer">
+        <form id="editForm"  method="POST" >
+            <label for="nombremas"  >NombreMascota</label>
+            <input class="ingresar" type="text" name="nombre"  id="nombremas" >
+            <label for="fechamas">FechaNacimiento</label>
+            <input class="ingresar" type="date" name="fecha_na"   id="fechamas">
+            <input type="submit" class="btn_actuaizar" name="actualizar" value="actualizar" >
+            <button id="cancelar" class="btn_cancelar">Cancelar</button>
+        </form>
+    
+</div>
 
 </div>
 
 
 </body>
 </html>
+
 

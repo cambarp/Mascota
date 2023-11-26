@@ -23,13 +23,8 @@ class MascotaController extends Connection {
             $tres->bind_param("si", $Raza,$idTipoMascota);
         }
         
-
         $tipomascota = new Tipomascota();
         $tipomascota->nombre = $nombre_tipo;
-
-        
-
-        
 
         $raza = new Raza();
         $raza->nombre = $Raza;
@@ -45,16 +40,21 @@ class MascotaController extends Connection {
             $stmtMascota->bind_param("ssiii", $nombre_r, $fechaNacimiento, $idu, $idTipoMascota, $idRazaMascota);
 
             if ($stmtMascota->execute()) {
-                echo "Datos insertados correctamente en las tres tablas.";
+                $mensaje_alerta = "Datos insertados correctamente";
+                echo '<script>alert("' . $mensaje_alerta . '");</script>';
+                echo '<script>setTimeout(function(){ window.location = "visualizar.php"; }, 1000);</script>';
             } else {
-                echo "Error al insertar datos en la tabla mascota: " . $conect->error;
+                
+                $mensaje = "Error al insertar los datos";
+                echo '<script>alert("' . $mensaje. '"). $conect->error ;</script>';
+               
             }
 
             
             $stmtMascota->close();
         } else {
-            // Manejar el error en la inserción de tipomascota o raza
-            echo "Error al insertar datos en la tabla tipomascota o raza: " . $conect->error;
+            
+            echo "Error al insertar los datos " . $conect->error;
         }
 
         
@@ -83,22 +83,54 @@ class MascotaController extends Connection {
         }
     }
 
-    public function update($id){
+    public function update($id,$nombre,$fecha_na){
         $conect = $this->connect();
 
-        $update="SELECT id,nombre , FechaNacimiento,  TipoMascota_id, Raza_id FROM mascota WHERE id='$id' ";
-        $resul = $conect->query($update);
-        if ($resul->num_rows > 0) {
-            $mostrar = [];
-            while ($row = $resul->fetch_assoc()) {
-                $mostrar[] = $row;
-            }
-            return $mostrar;
-        } else {
-            return "No se encontraron mascotas.";
+        $update = "UPDATE mascota SET nombre = '$nombre', FechaNacimiento = '$fecha_na'  WHERE id = $id";
+
+        // Ejecutar la consulta y manejar errores
+        if ($conect->query($update)) {
+            $mensaje_alerta = "Registro actualizado correctamente";
+            echo '<script>alert("' . $mensaje_alerta . '");</script>';
+            echo '<script>setTimeout(function(){ window.location = "visualizar.php"; }, 1000);</script>';
+            return $update;
+        }   
+        else {
+            $mensaje = "Error al actualizar el registro";
+            echo '<script>alert("' . $mensaje. '"). $conect->error ;</script>';
         }
+        
+        // Cerrar la conexión
+        $conect->close();
+    
+    }
+    
+    public function Delete($id){
+        $conect =$this->connect();
+     
 
+        // Utilizando una consulta preparada para evitar la inyección SQL
+        $delet = $conect->prepare("DELETE FROM mascota WHERE id = ?");
+        $delet->bind_param("i", $id); // "i" indica que el parámetro es un entero (si el ID es un entero)
+    
+        $resultado = $delet->execute();
+        
+        $delet->close();
+        $conect->close();
+    
+        if ($resultado) {
+            $mensaje_alerta = "Registro eliminado correctamente";
+            echo '<script>alert("' . $mensaje_alerta . '");</script>';
+            echo '<script>setTimeout(function(){ window.location = "visualizar.php"; }, 1000);</script>';
+        } else {
+            $mensaje = "Error al eliminar el registro";
+            echo '<script>alert("' . $mensaje. '"). $conect->error ;</script>';
+            
+        }
+        
+        
 
+        
     }
 }
 

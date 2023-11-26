@@ -33,10 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['guardar'])) {
 </head>
 <body>
     <div class="conte-general">
-
-            <div class="general__imagen">
-                <img class="imagen__img" src="interfaz_Mascota/perro-fondo-removebg-preview.png" alt="">
-            </div>
             <div class="general__formulario">
                 <form  action="" class="formulario" method="POST">
                     <label for="nombre">Nombre de la Mascota:</label>

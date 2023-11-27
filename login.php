@@ -1,47 +1,19 @@
-<?php
-    $nombre="";
-    $nombreuser="";
-    $correo="";
-    $contraseña="";
-
-    require_once __DIR__. "/vendor/autoload.php";
-        use Dotenv\Dotenv;
-        $dotenv = Dotenv::createImmutable(__DIR__) ;
-        $dotenv->load();
-
-    require_once(__DIR__ . '/controller/user.controller.php');
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST['Registrar'])) {
-                if (isset($_POST["nombre"]) && isset($_POST["nombreuser"]) && isset($_POST["correo"]) && isset($_POST["contraseña"])) {
-                        $nombre = $_POST["nombre"];
-                        $nombreuser = $_POST["nombreuser"];
-                        $correo = $_POST["correo"];
-                        $contraseña = $_POST["contraseña"];
-                                    
-                        $controlar = new usercontroller();
-                        $controlar->create($nombre, $nombreuser, $correo, $contraseña);
-                                }
-            }elseif(isset($_POST['IniciarSesion'])) {
-                $nombreuser = $_POST['nombreuser'];
-                $contraseña = $_POST['contraseña'];
-            
-                $controller = new usercontroller();
-            
-                if ($controller->authenticate($nombreuser, $contraseña)) {
-                    $mensaje_alerta = "!Bienvendo/a :";
-                    echo '<script>alert("' . $mensaje_alerta . $nombreuser.'");</script>';
-                    echo '<script> setTimeout(function() { window.location = "mascota.php"; }, 1000);</script>';
-                } else {
-                    $mensaje = "error nombre o contraseña de usuarios son incorrectos";
-                    echo '<script>alert("' . $mensaje. '");</script>';
-                }
-                
-            }
-        }
-
-        ?>
-
+ <?php 
+    require_once __DIR__ . "/./controller/user.controller.php";
+    require_once __DIR__ . "/./vendor/autoload.php";
+    use Dotenv\Dotenv;
+    $dotenv = Dotenv::createImmutable(__DIR__) ;
+    $dotenv->load();
+    
+    if(isset($_POST['Registrar'])){
+        require_once __DIR__ . "/./process/validar.process.php";
+    }
+    if(isset($_POST['IniciarSesion'])){
+        require_once __DIR__ . "/./process/validar.process.php";
+    }
+    
+    
+    ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -72,7 +44,15 @@
                 </div>
             </div>
             <div class="general__formularios">
-                
+            <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($errores)) {
+                        echo "<ul class='errores'>";
+                        foreach ($errores as $error) {
+                            echo "<li>$error</li>";
+                        }
+                        echo "</ul>";
+                    }
+                ?>
                     <form action="" method="POST" class="login__form">
                         
                             <div class="grupo">

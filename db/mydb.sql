@@ -57,8 +57,8 @@ CREATE TABLE `mascota` (
 /*Data for the table `mascota` */
 
 insert  into `mascota`(`id`,`nombre`,`FechaNacimiento`,`foto`,`User_id`,`TipoMascota_id`,`Raza_id`) values 
-(1,'pluto','2018-05-23 00:00:00.000000',NULL,2,1,1),
-(2,'rojo','2019-05-07 00:00:00.000000',NULL,1,2,2);
+(1,'soledad','2022-06-14 00:00:00.000000',NULL,1,1,1),
+(2,'pluto','2019-06-25 00:00:00.000000',NULL,2,2,2);
 
 /*Table structure for table `raza` */
 
@@ -76,8 +76,8 @@ CREATE TABLE `raza` (
 /*Data for the table `raza` */
 
 insert  into `raza`(`id`,`nombre`,`TipoMascota_id`) values 
-(1,'montuno',1),
-(2,'vengala',3);
+(1,'vengala',1),
+(2,'montuno',3);
 
 /*Table structure for table `role` */
 
@@ -134,8 +134,8 @@ CREATE TABLE `user` (
 /*Data for the table `user` */
 
 insert  into `user`(`id`,`nombre`,`username`,`email`,`password`,`Role_id`,`foto`) values 
-(1,'nisha','nishacambar','nilcambar@gmail.com','2001',NULL,NULL),
-(2,'isabel','isabellmaria','isabel@gmail.com','2023',NULL,NULL);
+(1,'nilson','nilcambarp','nilcambar@gmail.com','Nil@25',NULL,NULL),
+(2,'jose','josec','josec@gmail.com','joS$12',NULL,NULL);
 
 /*Table structure for table `vacuna` */
 

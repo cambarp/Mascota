@@ -158,11 +158,29 @@ body{
 
 .success {     
     color: #ffffff;
-    background-color: #4CAF50;
+   
     
 }
 
 .error {
     background-color: #f44336;
     color: #ffffff;
+}
+
+
+.errores {
+    list-style-type: none;
+    padding: 20px;
+    background-color: #f9f7f8;
+    color: #d82436;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.errores li {
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 3px;
+    background-color: #ffeeee;
 }
